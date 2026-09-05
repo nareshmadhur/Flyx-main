@@ -1,26 +1,8 @@
-name = "flyx-v3"
+# Root configuration for the flyx-main Cloudflare Workers Build.
 
-main = ".open-next/worker.js"
+name = "flyx-main"
 
-compatibility_date = "2026-09-05"
-compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2026-08-07"
 
 [assets]
-directory = ".open-next/assets"
-binding = "ASSETS"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "flyx-v3-db"
-database_id = "6804a539-6300-425c-acad-4aa027c79122"
-
-[[kv_namespaces]]
-binding = "CACHE"
-id = "3edb1a1cd28f4a9f8bb3a1fd462dd821"
-
-[vars]
-FLYX_DEPLOY_TARGET = "cloudflare"
-FLYX_NO_BROWSER = "true"
-
-[observability]
-enabled = false
+directory = "./landing"
