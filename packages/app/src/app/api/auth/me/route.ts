@@ -7,7 +7,7 @@
 
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth/get-session";
-import { findAccountById } from "@/lib/db";
+import { findAccountById } from "@/lib/db/cloudflare-auth";
 
 export async function GET() {
   try {
@@ -16,7 +16,7 @@ export async function GET() {
       return NextResponse.json({ user: null });
     }
 
-    const account = findAccountById(session.sub);
+    const account = await findAccountById(session.sub);
     if (!account) {
       return NextResponse.json({ user: null });
     }
