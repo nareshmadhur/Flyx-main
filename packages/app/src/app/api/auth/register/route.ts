@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     const admin = isFirstAccount ? true : Boolean(isAdmin);
 
     const passwordHash = await hashPassword(password);
-    const account = createAccount(username, passwordHash, admin);
+    const account = await createAccount(username, passwordHash, admin);
 
     return NextResponse.json(
       {
