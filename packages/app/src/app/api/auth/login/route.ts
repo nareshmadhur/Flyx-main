@@ -6,7 +6,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import { findAccountByUsername } from "@/lib/db";
+import { findAccountByUsername } from "@/lib/db/cloudflare-auth";
 import { verifyPassword } from "@/lib/auth/password";
 import { signJWT } from "@/lib/auth/jwt";
 import { addLog } from "@/lib/log-store";
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Username and password are required" }, { status: 400 });
     }
 
-    const account = findAccountByUsername(username);
+    const account = await findAccountByUsername(username);
     if (!account) {
       addLog({ level: "warn", category: "auth", message: `Login failed: user "${username}" not found` });
       return NextResponse.json({ error: "Invalid username or password" }, { status: 401 });
