@@ -12,7 +12,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import { createAccount, getAccountCount } from "@/lib/db";
+import { createAccount,getAccountCount} from "@/lib/db/cloudflare-auth";
 import { hashPassword } from "@/lib/auth/password";
 
 export async function POST(request: NextRequest) {
