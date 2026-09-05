@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     }
 
     // First account is always admin
-    const existingCount = getAccountCount();
+    const existingCount = await getAccountCount();
     const isFirstAccount = existingCount === 0;
     const admin = isFirstAccount ? true : Boolean(isAdmin);
 
